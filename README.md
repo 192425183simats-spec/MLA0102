@@ -17,3 +17,19 @@ While Q is not empty
         End If
     End For
 End While
+
+
+DFS(Graph, Start)
+
+Create an empty set VISITED
+Call DFS_Visit(Start)
+
+DFS_Visit(u)
+    If u is not in VISITED
+        Mark u as visited
+        Print u
+
+        For each vertex v adjacent to u
+            DFS_Visit(v)
+        End For
+    End If
