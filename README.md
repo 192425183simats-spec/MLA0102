@@ -36,46 +36,65 @@ DFS_Visit(u)
 
 Decision tree
 
-Start with the complete dataset as the root node.
-If all training examples belong to the same class, create a leaf node.
-If no attributes remain, create a leaf node with the majority class.
-Calculate entropy for each attribute.
-Compute information gain for all attributes.
-Select the attribute with the highest information gain.
-Create a decision node using the selected attribute.
-Split the dataset based on attribute values.
-Repeat the process recursively for each subset.
-Stop when all nodes are classified.
+BFS(Graph, Start)
+Create an empty queue Q
+Create an empty set VISITED
+Mark Start as visited
+Insert Start into Q
+While Q is not empty
+Remove a vertex u from Q
+Print u
+For each vertex v adjacent to u
+If v is not in VISITED
+Mark v as visited
+Insert v into Q
+End If
+End For
+End While
+End BFS
 
-End Algorithm
 
 
 A* 
+AStar(Graph, Start, Goal)
+Create an empty Open list
+Create an empty Closed list
+Insert Start into Open list
+Set g(Start) = 0
+While Open list is not empty
+Select node n with minimum f(n)
+If n is Goal
+Return solution path
+End If
+Move n from Open list to Closed list
+For each neighbor m of n
+If m is in Closed list
+Continue
+End If
+Calculate g(m)
+Calculate h(m)
+Calculate f(m) = g(m) + h(m)
+Insert or update m in Open list
+End For
+End While
+End AStar
 
-Initialize the Open list with the start node.
-Initialize the Closed list as empty.
-For each node, calculate f(n) = g(n) + h(n).
-Select the node with the lowest f(n) from the Open list.
-If the selected node is the goal, return the solution path.
-Move the node from Open list to Closed list.
-Generate all neighboring nodes.
-Ignore neighbors already in the Closed list.
-Update cost and parent if a better path is found.
-Add valid neighbors to the Open list.
-Continue until the goal is reached or Open list becomes empty.
-
-End Algorithm
 
 
 Water jug
 
-Start with both jugs empty.
-Define the initial state and goal state.
-Fill any jug completely.
-Empty any jug.
-Pour water from one jug to another until one is full or the other is empty.
-Check whether the current state matches the goal state.
-Avoid repeating previously visited states.
-Continue the process until the goal state is reached or no solution exists.
-
-End Algorithm
+WaterJug(JugA, JugB, Goal)
+Initialize JugA = 0
+Initialize JugB = 0
+Create an empty set VISITED
+While current state is not Goal
+Fill JugA
+Fill JugB
+Empty JugA
+Empty JugB
+Pour water from JugA to JugB
+Pour water from JugB to JugA
+Check Goal state
+Avoid repeated states
+End While
+End WaterJug
